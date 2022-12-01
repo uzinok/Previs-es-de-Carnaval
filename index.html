@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +11,13 @@
 		body {
 			margin: 0;
 			min-height: 100vh;
-			width: 100vw;
 			position: relative;
 			min-width: 320px;
 			font-family: Zilla Slab, serif;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			color: #000000;
 		}
 
 		@font-face {
@@ -25,7 +26,7 @@
 			font-style: normal;
 			font-display: swap;
 			src: url(../fonts/AlfaSlabOne-Regular.woff2) format('woff2'),
-			url(../fonts/AlfaSlabOne-Regular.woff) format('woff');
+				url(../fonts/AlfaSlabOne-Regular.woff) format('woff');
 		}
 
 		@font-face {
@@ -34,7 +35,7 @@
 			font-style: normal;
 			font-display: swap;
 			src: url(../fonts/ZillaSlab-Regular.woff2) format('woff2'),
-			url(../fonts/ZillaSlab-Regular.woff) format('woff');
+				url(../fonts/ZillaSlab-Regular.woff) format('woff');
 		}
 
 		@font-face {
@@ -43,34 +44,437 @@
 			font-style: normal;
 			font-display: swap;
 			src: url(../fonts/ZillaSlab-Bold.woff2) format('woff2'),
-			url(../fonts/ZillaSlab-Bold.woff) format('woff');
+				url(../fonts/ZillaSlab-Bold.woff) format('woff');
 		}
 
 		.content {
+			width: 100%;
 			max-width: 500px;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+
+		.header {
+			display: block;
+			margin-bottom: 20px;
+		}
+
+		.header__title {
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+			color: inherit;
+			transition: color 0.25s ease-in-out, opacity 0.25s ease-in-out;
+		}
+
+		.header__title h1 {
+			margin: 0;
+			font-weight: 700;
+			font-size: 18px;
+			line-height: 22px;
+		}
+
+		.header:hover .header__title {
+			color: #38AEE1;
+		}
+
+		.header:active .header__title {
+			opacity: 0.7;
+		}
+
+		.header__picture {
+			display: block;
+			margin-right: 9px;
+		}
+
+		.header__img {
+			display: block;
+		}
+
+		.receipt {
+			position: relative;
+			background-image: url(./img/shape.png);
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			padding: 16px 22px 16px 18px;
+			margin-bottom: 20px;
+		}
+
+		.receipt::after {
+			content: '';
+			position: absolute;
+			top: 18px;
+			left: 17px;
+			width: calc(100% - 3px);
+			height: calc(100% - 3px);
+			background-image: url(./img/receipt-shadow.png);
+			background-size: 100% 100%;
+			z-index: -1;
+			transition: opacity 0.25s ease-in-out;
+		}
+
+		.receipt__title {
+			margin: 0 0 10px;
+			font-family: 'Alfa Slab One';
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 22px;
+			letter-spacing: 0.02em;
+		}
+
+		.receipt__list {
+			list-style: none;
+			margin: 0 0 11px;
+			padding: 5px 0 0;
+			border-top: 1px solid #000000;
+		}
+
+		.receipt__item {
+			font-size: 16px;
+			line-height: 22px;
+			display: flex;
+			align-items: flex-end;
+		}
+
+		.receipt__item::before {
+			content: '';
+			display: block;
+			border-bottom: 1px dashed #000;
+			order: 2;
+			flex-grow: 1;
+			margin: 0 1px 3px;
+		}
+
+		.blur {
+			filter: blur(3.5px);
+		}
+
+		.bold {
+			font-weight: 700;
+		}
+
+		.receipt__item .blur {
+			order: 1;
+		}
+
+		.receipt__item .blur .bold {
+			display: block;
+		}
+
+		.receipt__item .scope {
+			order: 3;
+			font-weight: 700;
+		}
+
+		.btn {
+			display: block;
+			padding: 13px 26px;
+			background-color: #38AEE1;
+			font-weight: 700;
+			font-size: 20px;
+			line-height: 22px;
+			text-align: center;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			text-decoration: none;
+			color: #FFFFFF;
+			border-radius: 10px;
+			transition: box-shadow 0.25s ease-in-out, opacity 0.25s ease-in-out;
+		}
+
+		.btn:hover {
+			box-shadow: 0px 20px 60px #38AEE1;
+		}
+
+		.btn:active {
+			opacity: 0.7;
+		}
+
+		@media (max-width: 499px) {
+			.block-500 {
+				display: block;
+			}
+		}
+
+		@media (min-width: 500px) {
+			.header__title h1 {
+				font-size: 32px;
+				line-height: 38px;
+			}
+
+			.receipt__title {
+				font-size: 32px;
+				line-height: 44px;
+				margin-bottom: 15px;
+			}
+
+			.receipt__list {
+				border-top-width: 2px;
+			}
+
+			.receipt__item {
+				font-size: 24px;
+				line-height: 32px;
+			}
+
+			.receipt__item::before {
+				margin-left: 3px;
+				margin-right: 3px;
+			}
+
+			.btn {
+				font-size: 36px;
+				line-height: 43px;
+				padding: 37px 65px 40px;
+				border-radius: 20px;
+			}
+
+			.receipt {
+				margin-bottom: 49px;
+			}
+
+			.receipt__list {
+				padding-top: 15px;
+				padding-bottom: 18px;
+			}
+
+			.blur {
+				filter: blur(5px);
+			}
+
+			.content {
+				box-sizing: content-box;
+			}
+		}
+
+		@media (min-width: 600px) {
+			.receipt {
+				padding: 42px 48px;
+			}
+
+			.receipt::after {
+				width: 100%;
+			}
+		}
+
+		@media (max-width: 1023px) {
+
+			.men-left,
+			.men-right {
+				display: none;
+			}
+		}
+
+		@media (min-width: 1280px) {
+
+			.men-left img,
+			.men-left picture {
+				width: 629px;
+			}
+
+			.men-right img,
+			.men-right picture {
+				width: 632px;
+			}
+		}
+
+		@media (min-width: 1024px) {
+
+			.men-left,
+			.men-right {
+				position: absolute;
+				bottom: 0;
+				width: fit-content;
+				pointer-events: none;
+			}
+
+			.men-left {
+				left: 0;
+			}
+
+			.men-right {
+				right: 0;
+				text-align: right;
+			}
+
+			.men-left img,
+			.men-left picture,
+			.men-right img,
+			.men-right picture {
+				position: absolute;
+				bottom: 0;
+				display: block;
+				width: 500px;
+			}
+
+			.men-left img,
+			.men-left picture {
+				left: 0;
+			}
+
+			.men-right img,
+			.men-right picture {
+				right: 0;
+			}
+
+			.mens picture {
+				transition: opacity 0.55s ease-in-out;
+			}
+
+			.mens picture:last-child {
+				opacity: 0;
+			}
+
+			.mens.hov picture:last-child {
+				opacity: 1;
+			}
+
+			.mens.hov picture:first-child {
+				opacity: 0;
+			}
+
+			.receipt.hov::after {
+				opacity: 0;
+			}
 		}
 	</style>
 </head>
+
 <body>
 
 	<div class="content">
 		<header class="header">
-			<picture>
-				<source media="(min-width: 500px)" srcset="img/avatar@100x100.webp" type="image/webp">
-				<source media="(min-width: 500px)" srcset="img/avatar@100x100.png">
 
-				<source srcset="img/avatar.webp" type="image/webp">
-				<img src="img/avatar.png" alt="logotipo">
-			</picture>
-			<h1>Previsões de Carnaval</h1>
+			<a href="#" class="header__title">
+				<picture class="header__picture">
+					<source media="(min-width: 500px)" srcset="img/avatar@100x100.webp" type="image/webp">
+					<source media="(min-width: 500px)" srcset="img/avatar@100x100.png">
+
+					<source srcset="img/avatar.webp" type="image/webp">
+					<img src="img/avatar.png" alt="logotipo" class="header__img">
+				</picture>
+
+				<h1>Previsões de Carnaval</h1>
+			</a>
+
 		</header>
 
 		<main>
 			<div class="receipt">
-				<h2>Expresso do dia</h2>
+				<h2 class="receipt__title">Expresso do dia</h2>
+
+				<ul class="receipt__list">
+					<li class="receipt__item">
+						<span class="blur">
+							<span class="bold">Portugal — Uruguai</span>
+							Handicap Asiático: H2 (–0.5)
+						</span>
+						<span class="scope">6.5</span>
+					</li>
+					<li class="receipt__item">
+						<span class="blur">
+							<span class="bold">Brasil — Suíça</span>
+							Ambos os Times Marcam: Sim
+						</span>
+						<span class="scope">1.97</span>
+					</li>
+					<li class="receipt__item">
+						<span class="blur">
+							<span class="bold">Coreia do Sul — Gana</span>
+							Handicap Asiático: H2 (0)
+						</span>
+						<span class="scope">2.43</span>
+					</li>
+				</ul>
+
+				<ul class="receipt__list">
+					<li class="receipt__item">
+						<span>Probabilidades totais</span>
+						<span class="scope">10.9</span>
+					</li>
+					<li class="receipt__item">
+						<span>Valor da aposta</span>
+						<span class="scope">504.0 €</span>
+					</li>
+					<li class="receipt__item">
+						<span>Possível vitória</span>
+						<span class="scope">5493.6 €</span>
+					</li>
+				</ul>
 			</div>
+
+			<a href="#" class="btn">
+				<span class="block-500">Pegue</span> o&#160;expresso
+			</a>
 		</main>
 	</div>
 
+	<div class="men-left mens" aria-hidden="true">
+		<picture>
+			<source media="(min-width: 1250px)" srcset="img/men-left@big.webp" type="image/webp">
+			<source media="(min-width: 1250px)" srcset="img/men-left@big.png">
+
+			<source srcset="img/men-left.webp" type="image/webp">
+			<img src="img/men-left.png" alt="" loading="lazy">
+		</picture>
+
+		<picture>
+			<source media="(min-width: 1250px)" srcset="img/men-left-hover.webp" type="image/webp">
+			<source media="(min-width: 1250px)" srcset="img/men-left-hover.png">
+
+			<source srcset="img/men-left-hover.webp" type="image/webp">
+			<img src="img/men-left-hover.png" alt="" loading="lazy">
+		</picture>
+	</div>
+
+	<div class="men-right mens" aria-hidden="true">
+		<picture>
+			<source media="(min-width: 1250px)" srcset="img/men-right@big.webp" type="image/webp">
+			<source media="(min-width: 1250px)" srcset="img/men-right@big.png">
+
+			<source srcset="img/men-right.webp" type="image/webp">
+			<img src="img/men-right.png" alt="" loading="lazy">
+		</picture>
+
+		<picture>
+			<source media="(min-width: 1250px)" srcset="img/men-right-hover.webp" type="image/webp">
+			<source media="(min-width: 1250px)" srcset="img/men-right-hover.png">
+
+			<source srcset="img/men-right-hover.webp" type="image/webp">
+			<img src="img/men-right-hover.png" alt="" loading="lazy">
+		</picture>
+	</div>
+
+	<script>
+		const receipt = document.querySelector(".receipt");
+
+		const header = document.querySelector(".header");
+		const menLeft = document.querySelector(".men-left");
+
+		const btn = document.querySelector(".btn");
+		const menRight = document.querySelector(".men-right");
+
+		header.addEventListener('mouseover', function () {
+			receipt.classList.add('hov');
+			menLeft.classList.add('hov');
+		});
+
+		header.addEventListener('mouseout', function () {
+			receipt.classList.remove('hov');
+			menLeft.classList.remove('hov');
+		});
+
+		btn.addEventListener('mouseover', function () {
+			receipt.classList.add('hov');
+			menRight.classList.add('hov');
+		});
+
+		btn.addEventListener('mouseout', function () {
+			receipt.classList.remove('hov');
+			menRight.classList.remove('hov');
+		});
+	</script>
+
 </body>
+
 </html>
