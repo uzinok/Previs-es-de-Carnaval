@@ -83,8 +83,20 @@
 		}
 
 		.header__picture {
+			position: relative;
 			display: block;
 			margin-right: 9px;
+		}
+
+		.header__picture::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 18px;
+			height: 18px;
+			background-image: url(./img/telegram-icon.svg);
+			background-size: contain;
 		}
 
 		.header__img {
@@ -98,6 +110,17 @@
 			background-size: 100% 100%;
 			padding: 16px 22px 16px 18px;
 			margin-bottom: 20px;
+		}
+
+		.receipt::before {
+			content: '';
+			position: absolute;
+			top: 57px;
+			left: 8px;
+			width: 209px;
+			height: 162px;
+			background-image: url(./img/stamp.svg);
+			background-size: 100% 100%;
 		}
 
 		.receipt::after {
@@ -134,6 +157,14 @@
 			line-height: 22px;
 			display: flex;
 			align-items: flex-end;
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+		}
+
+		.receipt__list:first-of-type .receipt__item:not(:last-child) {
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+			border-bottom: 0.2px solid rgba(0, 0, 0, 0.5);
 		}
 
 		.receipt__item::before {
@@ -248,12 +279,30 @@
 		}
 
 		@media (min-width: 600px) {
+
+			.header__picture::before {
+				width: 24px;
+				height: 24px;
+			}
+
 			.receipt {
 				padding: 42px 48px;
 			}
 
 			.receipt::after {
 				width: 100%;
+			}
+
+			.receipt::before {
+				top: 114px;
+				left: 38px;
+				width: 361px;
+				height: 258px;
+			}
+
+			.receipt__list:first-of-type .receipt__item:not(:last-child) {
+				padding-bottom: 15px;
+				margin-bottom: 15px;
 			}
 		}
 
@@ -262,19 +311,6 @@
 			.men-left,
 			.men-right {
 				display: none;
-			}
-		}
-
-		@media (min-width: 1280px) {
-
-			.men-left img,
-			.men-left picture {
-				width: 629px;
-			}
-
-			.men-right img,
-			.men-right picture {
-				width: 632px;
 			}
 		}
 
@@ -335,6 +371,24 @@
 
 			.receipt.hov::after {
 				opacity: 0;
+			}
+		}
+
+		@media (min-width: 1280px) {
+
+			.men-left,
+			.men-right {
+				position: fixed;
+			}
+
+			.men-left img,
+			.men-left picture {
+				width: 629px;
+			}
+
+			.men-right img,
+			.men-right picture {
+				width: 632px;
 			}
 		}
 	</style>
