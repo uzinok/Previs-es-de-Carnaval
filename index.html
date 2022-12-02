@@ -11,10 +11,7 @@
 	<style>
 		body {
 			margin: 0;
-			padding-top: 30px;
-			padding-bottom: 30px;
-			height: 100%;
-			height: calc(var(--vh, 1vh) * 100);
+			min-height: 100%;
 			position: relative;
 			min-width: 320px;
 			font-family: Zilla Slab, serif;
@@ -504,14 +501,6 @@
 	</div>
 
 	<script>
-		let vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-		window.addEventListener('resize', () => {
-			let vh = window.innerHeight * 0.01;
-			document.documentElement.style.setProperty('--vh', `${vh}px`);
-		});
-
 		const receipt = document.querySelector(".receipt");
 
 		const header = document.querySelector(".header");
